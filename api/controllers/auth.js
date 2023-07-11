@@ -14,6 +14,7 @@ export const register = async (req, res, next) => {
             username: req.body.username,
             email: req.body.email,
             password: hash,
+            isAdmin:req.body.isAdmin
         })
         await newUser.save()
         res.status(200).send("User has been created")

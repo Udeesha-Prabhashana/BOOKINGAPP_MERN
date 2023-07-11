@@ -44,7 +44,7 @@ app.use(express.json()) //Express application to parse incoming request bodies w
 app.use("/api/auth", authRoute);
 app.use("/api/users", usersRoute);
 app.use("/api/hotels", hotelsRoute);
-app.use("/auth/room", roomRoute);
+app.use("/api/rooms", roomRoute);
 
 app.use((err, req, res, next) => {
   const errorStatus = err.status || 500;

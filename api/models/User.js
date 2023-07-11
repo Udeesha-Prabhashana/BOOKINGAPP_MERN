@@ -17,7 +17,7 @@ const UserSchema = new mongoose.Schema({
   },
   isAdmin: {
     type: Boolean,
-    require: false,
+    require: true,
   },
 },
 {timestamps: true} //create time, update time and save
