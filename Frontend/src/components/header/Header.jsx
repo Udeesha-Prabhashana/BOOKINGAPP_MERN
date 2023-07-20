@@ -6,10 +6,12 @@ import { useState } from "react";
 import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import {format, setDayOfYear} from "date-fns";
+import { useNavigate } from "react-router-dom";
 
 
 const Header = ({type}) => {
     const [openDate , setOpenDate] = useState(false)  //beginig it is false
+    const [destination , setDestination] = useState("")
     const [date, setDate] = useState([
         {
             startDate: new Date(),
@@ -24,6 +26,8 @@ const Header = ({type}) => {
         room: 1,
     });
 
+    const navigate = useNavigate()  //call to navigate to different routes in your application
+
     const handleOption = (name, operation) => {   //declare hanleoption function to incres and decrese count od adult,children,rooms
         setOptions((prev) => {
             return {
@@ -32,6 +36,10 @@ const Header = ({type}) => {
             };
         });
     };
+
+    const handleSearch = () => {  
+        navigate("/hotels" , {state:{}})         //call "hotels" page
+    }
 
     return (
         <div className="header">
@@ -70,6 +78,7 @@ const Header = ({type}) => {
                                 type="text"
                                 placeholder="Where are you going?"
                                 className="headerSearchInput"
+                                onChange={e=>setDestination(e.target.value)}  // When the input value changes, this function will be called and the 'destination' state will be updated with the new value.
                             />    
                         </div>
                         <div className="headerSearchItem">      
@@ -117,7 +126,7 @@ const Header = ({type}) => {
                             </div>}
                         </div>
                         <div className="headerSearchItem">
-                            <button className="headerBtn">Search</button>
+                            <button className="headerBtn" onClick={handleSearch}>Search</button> 
                         </div>
                         </div>
                     </>
