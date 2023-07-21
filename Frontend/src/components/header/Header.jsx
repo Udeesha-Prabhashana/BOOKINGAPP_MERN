@@ -6,7 +6,7 @@ import { useState } from "react";
 import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import {format, setDayOfYear} from "date-fns";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom"; //programmatically navigate the user to different routes within the application,like clicking on a button, submitting a form, or performing an action.
 
 
 const Header = ({type}) => {
@@ -38,7 +38,7 @@ const Header = ({type}) => {
     };
 
     const handleSearch = () => {  
-        navigate("/hotels" , {state:{}})         //call "hotels" page
+        navigate("/hotels" , {state:{destination,date,option}})         //call "hotels" page
     }
 
     return (
@@ -93,6 +93,7 @@ const Header = ({type}) => {
                             moveRangeOnFirstSelection={false}
                                 ranges={date}
                                 className="date"
+                                minDate={new Date()}
                             />}
                         </div>
                         <div className="headerSearchItem">
