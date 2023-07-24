@@ -3,7 +3,7 @@ import Header from "../../components/header/Header";
 import Navbar from "../../components/navbar/Navbar";
 import { useLocation } from "react-router-dom";
 import { useState } from "react";
-import {format, setDayOfYear} from "date-fns";
+import {format} from "date-fns";
 import { DateRange } from "react-date-range";
 
 const List = () => {
@@ -18,13 +18,13 @@ const List = () => {
         <div>
             <Navbar />
             <Header type="list" />
-            <div className="listContainer">
+            {/* <div className="listContainer">
                 <div className="listWrapper">
                     <div className="listSearch">
                         <h1 className="lsTitle">Search</h1>
                         <div className="lsItem">
                             <label> Destination </label>
-                            <input placeholder="destination" type="text"/>
+                            <input placeholder={destination} type="text"/>
                         </div>
                         <div className="lsItem">
                             <label> Check-in Date </label>
@@ -59,25 +59,25 @@ const List = () => {
                                 <span className="lsOptionText">
                                     Adult
                                 </span>
-                                <input type="number" className="lsOptionInput" placeholder="option.adult"/>
+                                <input type="number" className="lsOptionInput" placeholder={options.adult}/>
                             </div>
                             <div className="lsOptionItem">
                                 <span className="lsOptionText">
                                     Children
                                 </span>
-                                <input type="number" className="lsOptionInput" placeholder="option.children"/>
+                                <input type="number" className="lsOptionInput" placeholder={options.children}/>
                             </div>
                             <div className="lsOptionItem">
                                 <span className="lsOptionText">
                                     Room
                                 </span>
-                                <input type="number" className="lsOptionInput" placeholder="option.room"/>
+                                <input type="number" className="lsOptionInput" placeholder={options.room} />
                             </div>
                         </div>
                     </div>
                     <div className="listResult"></div>
                 </div>
-            </div>
+            </div> */}
         </div>
     )
 }
