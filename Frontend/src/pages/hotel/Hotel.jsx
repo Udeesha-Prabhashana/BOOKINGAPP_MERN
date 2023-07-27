@@ -5,7 +5,7 @@ import MailList from "../../components/MailList/MailList";
 import Footer from "../../components/footer/Footer";
 import { faCircleArrowLeft, faCircleArrowRight, faCircleXmark, faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";   /* for import icon */
 
 const Hotel = () => {
 
