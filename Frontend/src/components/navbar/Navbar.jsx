@@ -1,6 +1,6 @@
 import "./navbar.css"
 
-const Navbar = () => {
+const Navbar =({type}) => {
     return (
         <div className="navbar">
             <div className="navContainer">
