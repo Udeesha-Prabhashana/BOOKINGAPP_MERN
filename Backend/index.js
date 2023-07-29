@@ -6,6 +6,7 @@ import usersRoute from "./routes/users.js";
 import hotelsRoute from "./routes/hotels.js";
 import roomRoute from "./routes/room.js";
 import cookieParser from "cookie-parser";
+import cors from "cors";   //The cors package is used in Node.js applications to handle Cross-Origin Resource Sharing (CORS) headers.
 
 const app = express()
 dotenv.config()
@@ -38,6 +39,7 @@ app.get("/", (req, res) => {
 //   next(); //go to the next middleware
 // });
 
+app.use(cors()) //but it is not want now because this -> "proxy": "http://localhost:8800/api"
 app.use(cookieParser())
 app.use(express.json()) //Express application to parse incoming request bodies with JSON payloads.
 
