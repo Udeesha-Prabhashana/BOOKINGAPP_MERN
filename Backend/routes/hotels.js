@@ -30,4 +30,4 @@ router.get("/", getHotels);
 router.get("/countByCity", countByCity);
 router.get("/countByType", getHotels);
 
-export default router
+export default router;
