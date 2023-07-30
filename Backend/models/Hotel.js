@@ -17,12 +17,16 @@ const HotelSchema = new mongoose.Schema({
     type: String,
     require: true,
   },
+  distance: {
+    type: String,
+    required: true,
+  },
   photo: {
     type: [String],
-    },
+  },
   title: {
-      type: String,
-      require: true,
+    type: String,
+    require: true,
   },
   desc: {
     type: String,
@@ -43,7 +47,7 @@ const HotelSchema = new mongoose.Schema({
   featured: {
     type: Boolean,
     require: false,
-  }
+  },
 });
 
 export default mongoose.model("Hotel",HotelSchema)  //creates a MongoDB collection called "hotels" based on the defined schema.
