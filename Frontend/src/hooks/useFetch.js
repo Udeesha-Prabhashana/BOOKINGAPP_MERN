@@ -21,7 +21,7 @@ const useFetch = (url) => {
       setLoading(false); //Regardless of success or error, setLoading(false) is called to indicate that the data fetching process is completed.
     };
     fetchData();
-  }, []); // }, [url]);userFetch is depend on [url] uwhen using it.when we use [url], when we chngeing url, it's gonna refetch again.
+  }, [url]); // }, [url]);userFetch is depend on [url] uwhen using it.when we use [url], when we chngeing url, it's gonna refetch again.
 
   const reFetch = async () => {
     //reFetch function is defined to manually trigger the data fetching process again.

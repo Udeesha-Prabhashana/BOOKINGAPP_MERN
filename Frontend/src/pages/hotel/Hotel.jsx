@@ -6,11 +6,16 @@ import Footer from "../../components/footer/Footer";
 import { faCircleArrowLeft, faCircleArrowRight, faCircleXmark, faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";   /* for import icon */
+import { useLocation } from "react-router-dom";
+import useFetch from "../../hooks/useFetch";
 
 const Hotel = () => {
 
-    const [slideNumber, setSlideNumber] = useState(0)
-    const  [open,setOpen] = useState(false)
+    const location = useLocation();
+    const [slideNumber, setSlideNumber] = useState(0);
+    const [open, setOpen] = useState(false);
+
+    const { data, loading, error, reFetch } = useFetch()
 
     const photos = [
         {

@@ -19,7 +19,7 @@ const List = () => {
     const [min, setMin] = useState(undefined);
     const [max, setMax] = useState(undefined);
 
-    const { data, loading, error, reFetch } = useFetch(
+    const { data, loading, error, reFetch } = useFetch(   //get also "Refetch "
         `/hotels?city=${ destination }&min=${ min || 0 }&max=${ max || 999 }`);   //search only given city (city=${destination}) and get that hotels and assign to tha "data" using "useFetch".
 
     // useEffect(() => {
@@ -27,7 +27,7 @@ const List = () => {
     // }, [location.state])
 
     const handleClick = () => {
-        reFetch();
+        reFetch();     // call refetch 
     };
     
     return (
@@ -75,7 +75,7 @@ const List = () => {
                                 </span>
                                 <input
                                     type="number"
-                                    onChange={(e) => setMax(e.target.value)}
+                                    onChange={(e) => setMax(e.target.value)} //e is a input and update the max using setmax fun like this, "onChange" event is commonly used with form elements like input fields, checkboxes, or select dropdowns.
                                     className="lsOptionInput" />
                             </div>
                             <div className="lsOptionItem">
@@ -97,7 +97,7 @@ const List = () => {
                                 <input type="number" min={1} className="lsOptionInput" placeholder={options.room} />
                             </div>
                         </div>
-                        <button onClick={handleClick}> Search </button>
+                        <button onClick={handleClick}> Search </button>  {/* reafetch again */}
                     </div>
                     <div className="listResult">
                         {loading ? (
