@@ -4,10 +4,11 @@ import Header from "../../components/header/Header";
 import MailList from "../../components/MailList/MailList";
 import Footer from "../../components/footer/Footer";
 import { faCircleArrowLeft, faCircleArrowRight, faCircleXmark, faLocationDot } from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";   /* for import icon */
 import { useLocation } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
+import { SearchContext } from "../../context/SearchContext";
 
 const Hotel = () => {
 
@@ -16,7 +17,19 @@ const Hotel = () => {
     const [slideNumber, setSlideNumber] = useState(0);
     const [open, setOpen] = useState(false);
 
-    const { data, loading, error, reFetch } = useFetch(`/hotels/find/${id}`)
+    const { data, loading, error } = useFetch(`/hotels/find/${ id }`);
+    const { dates } = useContext(SearchContext);
+
+    // console.log(dates);
+
+    const MILLISECONDS_PER_DAY = 1000 * 60 * 60 * 24;
+    function dayDifference(date1, date2) {
+        const timeDiff = Math.abs(date2.getTime() - date1.getTime());
+        const diffDays = Math.ceil(timeDiff / MILLISECONDS_PER_DAY);
+        return diffDays;
+    }
+
+    console.log(dayDifference(dates.endDate, dates.startDate));
 
     const handleOpen = (i) => {
         setSlideNumber(i)
