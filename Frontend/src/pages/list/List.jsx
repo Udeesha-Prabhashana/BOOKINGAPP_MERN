@@ -13,9 +13,9 @@ const List = () => {
  
     const location = useLocation();           //used to access the current location information in your application's routing. It returns an object with properties representing the current URL
     const [destination, setDestination] = useState(location.state.destination);
-    const [date, setDate] = useState(location.state.date);
+    const [dates, setDates] = useState(location.state.dates);
     const [openDate, setOpenDate] = useState(false);
-    const [options, setOptions] = useState(location.state.option);
+    const [options, setOptions] = useState(location.state.options);
     const [min, setMin] = useState(undefined);
     const [max, setMax] = useState(undefined);
 
@@ -46,15 +46,15 @@ const List = () => {
                             <label> Check-in Date </label>
                             <span onClick={() => setOpenDate(!openDate)}>
                                 {`${ format(
-                                    date[0].startDate,
+                                    dates[0].startDate,
                                     "MM/dd/yyyy"
-                                ) } to ${ format(date[0].endDate,
+                                ) } to ${ format(dates[0].endDate,
                                     "MM/dd/yyyy") }`}
                             </span>
                             {openDate && (<DateRange>
-                                onChange={(item) => setDate([item.selection])}
+                                onChange={(item) => setDates([item.selection])}
                                 minDate={new Date()}
-                                ranges={date}
+                                ranges={dates}
                             </DateRange>)}
                         </div>
                         <div className="lsItem">
