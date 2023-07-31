@@ -17,19 +17,18 @@ const Hotel = () => {
     const [slideNumber, setSlideNumber] = useState(0);
     const [open, setOpen] = useState(false);
 
-    const { data, loading, error } = useFetch(`/hotels/find/${ id }`);
-    const { dates } = useContext(SearchContext);
+    const { data, loading, error } = useFetch(`/hotels/find/${ id }`);   //get all data in specific Hotel 
+    const { dates, options } = useContext(SearchContext);       //get dates and options in Searchcontext in INITIAL_STATE using "useContext()" fun
 
-    // console.log(dates);
 
     const MILLISECONDS_PER_DAY = 1000 * 60 * 60 * 24;
-    function dayDifference(date1, date2) {
+    function dayDifference(date1, date2) {                     //calculates the difference in days between two Dates
         const timeDiff = Math.abs(date2.getTime() - date1.getTime());
-        const diffDays = Math.ceil(timeDiff / MILLISECONDS_PER_DAY);
+        const diffDays = Math.ceil(timeDiff / MILLISECONDS_PER_DAY);   //rounding up the result using Math.ceil.
         return diffDays;
     }
 
-    console.log(dayDifference(dates.endDate, dates.startDate));
+    const days =  dayDifference(dates[0].endDate, dates[0].startDate);
 
     const handleOpen = (i) => {
         setSlideNumber(i)
@@ -93,13 +92,13 @@ const Hotel = () => {
                                 </p>
                             </div>
                             <div className="hotelDetailsPrice">
-                                <h1>Perfect for a 9-night stay!</h1>
+                                <h1>Perfect for a {days}-night stay!</h1>
                                 <span>
                                     Located in the real heart of Krakow, this property has an
                                     excellent location score of 9.8!
                                 </span>
                                 <h2>
-                                    <b>$945</b> (9 nights)
+                                    <b>${days * data.cheapestPrice * options.room}</b> ({days} nights)
                                 </h2>
                                 <button>Reserve or Book Now!</button>
                             </div>
