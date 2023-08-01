@@ -1,33 +1,32 @@
 import { createContext, useReducer } from "react";  //useful when you have data that needs to be accessed by multiple components at different levels in your React component tree.
 
 const INITIAL_STATE = {
-  city: undefined,
-  dates: [],
-  options: {
-    adult: undefined,
-    children: undefined,
-    room: undefined,
-  },
+  
+    user: null,
+    loading: false,
+    error: null,
 };
 
-export const SearchContext = createContext(INITIAL_STATE);
+export const AuthContext = createContext(INITIAL_STATE);
 
-const SearchReducer = (state, action) => {
+const AuthReducer = (state, action) => {
   switch (action.type) {
-    case "NEW_SEARCH":
-      return action.payload;
-    case "RESET_SEARCH": //This case resets the state to the INITIAL_STATE
-      return INITIAL_STATE;
+    case "LOGIN_START":
+        return {
+            user: null,
+            loading: true,
+            error: null,
+          };
     default:
-      return state;
+        return state;
   }
 };
 
-export const SearchContextProvider = ({ children }) => {    //"SearchContextProvider" component of the application to enable state management with the "SearchContext" and "SearchReducer".
-  const [state, dispatch] = useReducer(SearchReducer, INITIAL_STATE); //"useReducer" hook is used to manage the state within the "SearchContextProvider"
+export const AuthContextProvider = ({ children }) => {    //"SearchContextProvider" component of the application to enable state management with the "SearchContext" and "SearchReducer".
+  const [state, dispatch] = useReducer(AuthReducer, INITIAL_STATE); //"useReducer" hook is used to manage the state within the "SearchContextProvider"
 
   return (
-    <SearchContext.Provider
+    <AuthContext.Provider
       value={{
         city: state.city,
         dates: state.dates,
@@ -36,6 +35,6 @@ export const SearchContextProvider = ({ children }) => {    //"SearchContextProv
       }}
     >
       {children}
-    </SearchContext.Provider>
+    </AuthContext.Provider>
   );
 };
