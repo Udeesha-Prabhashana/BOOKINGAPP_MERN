@@ -10,27 +10,25 @@ const Login = () => {
     password: undefined,
   });
 
-  const { user,loading, error, dispatch } = useContext(AuthContext);
+  const { loading, error, dispatch } = useContext(AuthContext); //
 
   const navigate = useNavigate()      //allows you to programmatically navigate to different routes in your application
 
   const handleChange = (e) => {
-    setCredentials((prev) => ({ ...prev, [e.target.id]: e.target.value }));
+    setCredentials((prev) => ({ ...prev, [e.target.id]: e.target.value }));   //example, if the id of the username input is "username", the code will update credentials.username with the new value entered by the user.
   };
 
   const handleClick = async (e) => {
     e.preventDefault();
-    dispatch({ type: "LOGIN_START" });
+    dispatch({ type: "LOGIN_START" });   //seful for showing a loading spinner or disabling the login button while waiting for the API response
     try {
-      const res = await axios.post("/auth/login", credentials);
-      dispatch({ type: "LOGIN_SUCCESS", payload: res.data.details });
-      navigate("/")
+      const res = await axios.post("/auth/login", credentials);         //sends a POST request to the /auth/login endpoint with the credentials object as the payload. The credentials object contains the username and password entered by the user
+      dispatch({ type: "LOGIN_SUCCESS", payload: res.data.details });   //The res.data.details represents the data returned from the server after a successful login
+      navigate("/")       //useNavigate hook (provided by React Router) to redirect the user to the home page ("/")
     } catch (err) {
       dispatch({ type: "LOGIN_FAILURE", payload: err.response.data });
     }
   };
-
-    console.log(user)
 
   return (
     <div className="login">
