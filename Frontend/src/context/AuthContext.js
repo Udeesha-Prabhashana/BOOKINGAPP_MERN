@@ -53,7 +53,7 @@ export const AuthContextProvider = ({ children }) => {    //"AuthContextProvider
   const [state, dispatch] = useReducer(AuthReducer, INITIAL_STATE); //"useReducer" hook is used to manage the state within the "AuthContextProvider"
 
 
-  useEffect(() => {
+  useEffect(() => {          //useEffect hook is used to automatically update the localStorage whenever the state.user changes
     localStorage.setItem("user", JSON.stringify(state.user));
   }, [state.user]);
 
@@ -69,4 +69,4 @@ export const AuthContextProvider = ({ children }) => {    //"AuthContextProvider
       {children}
     </AuthContext.Provider>
   );
-};
+};                           //Overall, this code sets up an authentication context using React's context API and manages the state related to user authentication using the useReducer hook. It provides a convenient way to share authentication state across different components in the application and persists the user data in localStorage for a seamless user experience.
