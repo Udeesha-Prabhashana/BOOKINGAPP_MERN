@@ -11,7 +11,7 @@ const getStoredUser = () => {
 };
 
 const INITIAL_STATE = {
-  user: JSON.parse(localStorage.getItem("user")) || null,
+  user: getStoredUser(),     //JSON.parse(localStorage.getItem("user")) || null,
   loading: false,
   error: null,
 };
