@@ -12,7 +12,7 @@ const getStoredUser = () => {            //retrieve the user data from the local
 
 const INITIAL_STATE = {
   user: getStoredUser(), //JSON.parse(localStorage.getItem("user")) || null,
-  loading: false, //application is in a loading state (e.g., waiting for API responses).
+  loading: false, //application is in a loading state .
   error: null,
 };
 
@@ -23,7 +23,7 @@ const AuthReducer = (state, action) => {      //state (representing the current 
     case "LOGIN_START":
       return {
         user: null,
-        loading: true,
+        loading: true, //waiting for the API response
         error: null,
       };
     case "LOGIN_SUCCESS":
