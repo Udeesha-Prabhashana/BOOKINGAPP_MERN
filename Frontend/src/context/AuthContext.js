@@ -5,7 +5,7 @@ const getStoredUser = () => {            //retrieve the user data from the local
     const storedUser = localStorage.getItem("user");
     return storedUser ? JSON.parse(storedUser) : null; //JSON.parse function is used to parse the retrieved value
   } catch (error) {
-    console.error("Error parsing stored user data:", error);
+    // console.error("Error parsing stored user data:", error);
     return null;
   }
 };

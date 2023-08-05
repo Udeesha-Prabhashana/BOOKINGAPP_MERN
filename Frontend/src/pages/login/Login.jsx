@@ -10,8 +10,9 @@ const Login = () => {
     password: undefined,
   });
 
-  const { loading, error, dispatch } = useContext(AuthContext); //
+  const { user,loading, error, dispatch } = useContext(AuthContext); //
 
+  console.log(user)
   const navigate = useNavigate()      //allows you to programmatically navigate to different routes in your application
 
   const handleChange = (e) => {

@@ -1,7 +1,7 @@
 import { useContext } from "react"
 import "./navbar.css"
-import {Link} from "react-router-dom"
-import { AuthContext } from "../../context/AuthContext"
+import { Link } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
 
 const Navbar = () => {
     
@@ -14,13 +14,13 @@ const Navbar = () => {
                 </Link>
                 {user ? user.username : (
                     <div className="newTtem">
-                    <button className="navButton">Register</button>
-                    <button className="navButton">Login</button>
-                </div>
-                )};
+                        <button className="navButton">Register</button>
+                        <button className="navButton">Login</button>
+                    </div>
+                )}
             </div>
         </div>
-    )
-}
+    );
+};
 
 export default Navbar
