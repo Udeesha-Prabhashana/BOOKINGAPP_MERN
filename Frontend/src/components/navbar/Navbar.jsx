@@ -14,9 +14,15 @@ const Navbar = () => {
                 </Link>
                 {user ? user.username : (
                     <div className="newTtem">
+<<<<<<< HEAD
                         <button className="navButton">Register</button>
                         <button className="navButton">Login</button>
                     </div>
+=======
+                    <button className="navButton">Register</button>
+                    <button className="navButton">Login</button>
+                </div>
+>>>>>>> 7c9d1dbd6d534ef995300f993d86a09a2cc4a279
                 )}
             </div>
         </div>
