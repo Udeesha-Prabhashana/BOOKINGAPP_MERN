@@ -9,7 +9,9 @@ const Reserve = ({ setOpen, hotelId }) => {
                 <FontAwesomeIcon
                     icon={faCircleXmark}
                     className="rClose"
+                    onClick={()=> setOpen(false)}
                 />
+                <span> Select your rooms:</span>
             </div>
         </div>
     )
