@@ -7,8 +7,8 @@ const Reserve = ({ setOpen, hotelId }) => {
         <div className="reserve">
             <div className="rContainer">
                 <FontAwesomeIcon
-                    icon={faCircleXmark}
-                    className="rClose"
+                    // icon={faCircleXmark}
+                    // className="rClose"
                 />
             </div>
         </div>
