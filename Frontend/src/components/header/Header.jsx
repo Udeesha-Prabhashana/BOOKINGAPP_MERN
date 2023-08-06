@@ -8,9 +8,12 @@ import 'react-date-range/dist/theme/default.css'; // theme css file
 import {format, setDayOfYear} from "date-fns";
 import { useNavigate } from "react-router-dom"; //programmatically navigate the user to different routes within the application,like clicking on a button, submitting a form, or performing an action.
 import { SearchContext } from "../../context/SearchContext";
+import { AuthContext } from "../../context/AuthContext";
 
 
-const Header = ({type}) => {
+const Header = ({ type }) => {
+    
+    const { user } = useContext(AuthContext);
     const [openDate , setOpenDate] = useState(false)  //beginig it is false
     const [destination , setDestination] = useState("")
     const [dates, setDates] = useState([
@@ -74,7 +77,7 @@ const Header = ({type}) => {
                     <>
                         <h1 className="headerTitle">A lifetime of discounts? It's Genius </h1>
                         <p className="headerDesc">Get rewarded for your travels - unlock instant saving of 10% or more with a free Upbooking account</p>
-                        <button className="headerBtn"> Sign in / Register </button>
+                        {user ?  user.username : (<button className="headerBtn"> Sign in / Register </button>)}
                         <div className="headerSerch">
                         <div className="headerSearchItem">
                         <FontAwesomeIcon icon={faBed} className="headerIcon" />  

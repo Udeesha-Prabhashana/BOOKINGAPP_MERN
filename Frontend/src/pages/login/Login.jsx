@@ -24,7 +24,7 @@ const Login = () => {
     dispatch({ type: "LOGIN_START" });   //seful for showing a loading spinner or disabling the login button while waiting for the API response
     try {
       const res = await axios.post("/auth/login", credentials);         //sends a POST request to the /auth/login endpoint with the credentials object as the payload. The credentials object contains the username and password entered by the user
-      dispatch({ type: "LOGIN_SUCCESS", payload: res.data.details });   //The res.data.details represents the data returned from the server after a successful login
+      dispatch({ type: "LOGIN_SUCCESS", payload: res.data });   //The res.data.details represents the data returned from the server after a successful login
       navigate("/")       //useNavigate hook (provided by React Router) to redirect the user to the home page ("/")
     } catch (err) {
       dispatch({ type: "LOGIN_FAILURE", payload: err.response.data });
