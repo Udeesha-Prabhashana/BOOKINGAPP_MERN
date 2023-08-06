@@ -6,20 +6,25 @@ import Footer from "../../components/footer/Footer";
 import { faCircleArrowLeft, faCircleArrowRight, faCircleXmark, faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import { useContext, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";   /* for import icon */
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
 import { SearchContext } from "../../context/SearchContext";
+import { AuthContext } from "../../context/AuthContext";
+import Reserve from "../../components/reserve/Reserve";
 
 const Hotel = () => {
+
 
     const location = useLocation();
     const id = location.pathname.split("/")[2] //use to get hotel_id using location
     const [slideNumber, setSlideNumber] = useState(0);
     const [open, setOpen] = useState(false);
+    const [openModel, setOpenModel] = useState(false);    //used to reserve the hotel
 
     const { data, loading, error } = useFetch(`/hotels/find/${ id }`);   //get all data in specific Hotel 
     const { dates, options } = useContext(SearchContext);       //get dates and options in Searchcontext in INITIAL_STATE using "useContext()" fun
-
+    const { user } = useContext(AuthContext);
+    const navigate = useNavigate();
 
     const MILLISECONDS_PER_DAY = 1000 * 60 * 60 * 24;
     function dayDifference(date1, date2) {                     //calculates the difference in days between two Dates
@@ -46,6 +51,14 @@ const Hotel = () => {
 
         setSlideNumber(newSlideNumber)       /* set SlideNumber by newSlideNumber */
     };
+
+    const handleClick=() => {             //used to reserve the hotel
+        if(user){
+            setOpenModel(true);
+        } else {
+            navigate("/login");
+        }
+    }
 
     return (
         <div>
@@ -100,7 +113,7 @@ const Hotel = () => {
                                 <h2>
                                     <b>${days * data.cheapestPrice * options.room}</b> ({days} nights)
                                 </h2>
-                                <button>Reserve or Book Now!</button>
+                                <button onClick={handleClick}> Reserve or Book Now!</button>
                             </div>
                         </div>
                     </div>
@@ -109,6 +122,7 @@ const Hotel = () => {
                 </div>
                 </>
                 )}
+            {openModel && <Reserve setOpen={setOpenModel} hotelId={id}/>}
         </div>
     )
 }
