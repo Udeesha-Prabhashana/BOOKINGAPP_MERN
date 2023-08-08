@@ -63,7 +63,7 @@ export const AuthContextProvider = ({ children }) => {    //"AuthContextProvider
         user: state.user,
         loading: state.loading,
         error: state.error,
-        dispatch,
+        dispatch,                       //dispatch is a function, it can use to bring the data through the any root
       }}
     >
       {children}

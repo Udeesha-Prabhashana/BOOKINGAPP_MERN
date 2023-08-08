@@ -19,9 +19,9 @@ const Login = () => {
     setCredentials((prev) => ({ ...prev, [e.target.id]: e.target.value }));   //example, if the id of the username input is "username", the code will update credentials.username with the new value entered by the user.
   };
 
-  const handleClick = async (e) => {
-    e.preventDefault();
-    dispatch({ type: "LOGIN_START" });   //seful for showing a loading spinner or disabling the login button while waiting for the API response
+  const handleClick = async (e) => {       //axios can use only in async 
+    e.preventDefault();      //cann't lord given page     
+    dispatch({ type: "LOGIN_START" });   //dispatch() fun cl to the type: "LOGIN_START" and lord that data
     try {
       const res = await axios.post("/auth/login", credentials);         //sends a POST request to the /auth/login endpoint with the credentials object as the payload. The credentials object contains the username and password entered by the user
       dispatch({ type: "LOGIN_SUCCESS", payload: res.data });   //The res.data.details represents the data returned from the server after a successful login
