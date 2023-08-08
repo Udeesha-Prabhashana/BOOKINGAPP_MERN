@@ -9,8 +9,14 @@ const Reserve = ({ setOpen, hotelId }) => {
     const [selectedRooms,setSelectedRooms] = useState([])
 
     const handleSelect = (e) => {
-        const selected = e.target.checked
-     }
+        const checked = e.target.checked
+        const value = e.taget.value
+        setSelectedRooms(checked ? [...selectedRooms, value] : selectedRooms.filter((item) => item !== value));
+    };
+
+    console.log(selectedRooms);
+    
+
     return (
         <div className="reserve">
             <div className="rContainer">
@@ -30,12 +36,12 @@ const Reserve = ({ setOpen, hotelId }) => {
                             </div>
                             <div className="rPrice">{ item.price}</div>
                         </div>
-                        {item.roomNumbers.map(roomNumber => {
+                        {item.roomNumbers.map(roomNumber => (
                         <div className="room">
                             <label>{roomNumber.number}</label>
                             <input type="checkbox" value={roomNumber._id} onChange={handleSelect}/>      {/*   each room number has diffrent ID */}
                         </div>
-                         })}
+                         ))}
                     </div>
                 ))}
             </div>
