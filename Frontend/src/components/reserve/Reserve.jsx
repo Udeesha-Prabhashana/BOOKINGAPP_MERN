@@ -21,14 +21,24 @@ const Reserve = ({ setOpen, hotelId }) => {
     // console.log(selectedRooms);
 
     const getDatesInRange = (startDate,endDate) => {
-        const start =new Date(startDate)
-        const end =new Date(endDate)
+        const start = new Date(startDate);
+        const end = new Date(endDate);
         const date = new Date(start.getTime());
+        let list = [];
+        
+        while (date <= end) {
+            list.push(new Date(date).getTime());
+            date.setDate(date.getDate() + 1);
+        }
+
+        return list;
     }
 
-    const handleClick = () => {
-        const start = 
-    }
+    console.log(getDatesInRange(dates[0].startDate, dates[0].endDate));
+
+    // const handleClick = () => {
+    //     const start = 
+    // }
     
 
     return (
@@ -56,7 +66,7 @@ const Reserve = ({ setOpen, hotelId }) => {
                             <input type="checkbox" value={roomNumber._id} onChange={handleSelect}/>      {/* each room number has diffrent ID  using pass the  "value " as parameter using "_id"*/}
                         </div>
                         ))}
-                        <button onClick={handleClick} className="rButton"> Reserve Now!</button>
+                        <button className="rButton"> Reserve Now!</button>
                     </div>
                 ))}
             </div>
