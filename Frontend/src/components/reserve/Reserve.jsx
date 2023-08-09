@@ -37,12 +37,16 @@ const Reserve = ({ setOpen, hotelId }) => {
     const alldates = getDatesInRange(dates[0].startDate, dates[0].endDate) //get all dates using user given dates
 
     const isAvailable = (roomNumber) => {
-        const isFound = roomNumber.unvailableDates.some((date) =>   //some() method is used to check given any value is hear or not ... , "unvailableDates" is allready in the database
-            alldates.includes(new Date(date).getTime())       //check one by one given dates are hear or not 
-        );
-
-        return !isFound         //because "isFound" is true, that mean it's not availble
+    if (!roomNumber || !roomNumber.unavailableDates || !Array.isArray(roomNumber.unavailableDates)) { // Handle the case where roomNumber or its properties are undefined or not of expected type
+        return false;    // Or handle as appropriate for your use case
     }
+
+    const isFound = roomNumber.unavailableDates.some((date) =>  //some() method is used to check given any value is hear or not ... , "unvailableDates" is allready in the database
+        alldates.includes(new Date(date).getTime())             //check one by one given dates are hear or not 
+    );
+
+        return !isFound;            //because "isFound" is true, that mean it's not availble
+    };
 
     const handleClick = () => {
     }
