@@ -27,18 +27,25 @@ const Reserve = ({ setOpen, hotelId }) => {
         let list = [];
         
         while (date <= end) {
-            list.push(new Date(date).getTime());
+            list.push(new Date(date).getTime());   //when use getTime() func its give timestamps, its easier to copmir dates 
             date.setDate(date.getDate() + 1);
         }
 
         return list;
     }
 
-    console.log(getDatesInRange(dates[0].startDate, dates[0].endDate));
+    const alldates = getDatesInRange(dates[0].startDate, dates[0].endDate) //get all dates using user given dates
 
-    // const handleClick = () => {
-    //     const start = 
-    // }
+    const isAvailable = (roomNumber) => {
+        const isFound = roomNumber.unvailableDates.some((date) =>   //some() method is used to check given any value is hear or not ... , "unvailableDates" is allready in the database
+            alldates.includes(new Date(date).getTime())       //check one by one given dates are hear or not 
+        );
+
+        return !isFound         //because "isFound" is true, that mean it's not availble
+    }
+
+    const handleClick = () => {
+    }
     
 
     return (

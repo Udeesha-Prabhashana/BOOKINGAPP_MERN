@@ -17,7 +17,7 @@ const RoomSchema = new mongoose.Schema(
     desc: {
       type: String,
       require: true,
-        },
+    },
     roomNumbers: [{number: Number, unavailableDates: {type: [Date]} }],
   },
   { timestamps: true } //create time, update time and save
