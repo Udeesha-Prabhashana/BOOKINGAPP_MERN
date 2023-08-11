@@ -10,7 +10,7 @@ router.post("/:hotelid", verifyAdmin, createRoom);
 router.put("/:id", verifyAdmin, updateRoom);
 
 //UPDATE Room Availabilty
-router.put("availability/:id", updateRoomAvailability);
+router.put("/availability/:id", updateRoomAvailability);
 
 
 
