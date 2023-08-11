@@ -10,13 +10,26 @@ const Reserve = ({ setOpen, hotelId }) => {
     const [selectedRooms, setSelectedRooms] = useState([])
     const {dates} = useContext(SearchContext)
 
-    const handleSelect = (e) => {
+    const handleSelect = (e) => {      //use to get selected rooms
         const checked = e.target.checked;        // Extract whether the checkbox was checked or unchecked
         const value = e.target.value;           // Extract the value of the checkbox (presumably identifying the room)
         setSelectedRooms(checked ?
             [...selectedRooms, value]              //syntax (...) to create a new array.
             : selectedRooms.filter((item) => item !== value));   //it removes the deselected room's value from the list of selected rooms.
     };
+
+    const handleClick = async () => {
+        try {
+            await Promise.all(
+                selectedRooms.map(roomId => {
+                    const res = axios.put(`/rooms/availability/${ roomId }`, { dates: alldates });
+                    return res.data
+            }))
+        }
+        catch(err){
+            
+        }
+    }
 
     // console.log(selectedRooms);
 
@@ -46,11 +59,7 @@ const Reserve = ({ setOpen, hotelId }) => {
     );
 
         return !isFound;            //because "isFound" is true, that mean it's not availble
-    };
-
-    const handleClick = () => {
-    }
-    
+    };    
 
     return (
         <div className="reserve">
@@ -71,20 +80,22 @@ const Reserve = ({ setOpen, hotelId }) => {
                             </div>
                             <div className="rPrice">{ item.price}</div>
                         </div>
-                        {item.roomNumbers.map(roomNumber => (
-                        <div className="room">
-                            <label>{roomNumber.number}</label>
-                                <input
-                                    type="checkbox"
-                                    value={roomNumber._id}
-                                    onChange={handleSelect}
-                                    disabled={!isAvailable(roomNumber)}
-                                />      {/* each room number has diffrent ID  using pass the  "value " as parameter using "_id"*/}
+                        <div className="rSelectRooms">
+                            {item.roomNumbers.map(roomNumber => (
+                            <div className="room">
+                                <label>{roomNumber.number}</label>
+                                    <input
+                                        type="checkbox"
+                                        value={roomNumber._id}
+                                        onChange={handleSelect}
+                                        disabled={!isAvailable(roomNumber)}
+                                    />      {/* each room number has diffrent ID  using pass the  "value " as parameter using "_id"*/}
+                            </div>
+                            ))}
                         </div>
-                        ))}
-                        <button onClick={handleClick} className="rButton"> Reserve Now!</button>
-                    </div>
+                    </div>                   
                 ))}
+                <button onClick={handleClick} className="rButton"> Reserve Now!</button>
             </div>
         </div>
     );
