@@ -24,12 +24,12 @@ const Reserve = ({ setOpen, hotelId }) => {
             await Promise.all(
                 selectedRooms.map(roomId => {
                     const res = axios.put(`/rooms/availability/${ roomId }`, { dates: alldates });
-                    return res.data
-            }))
+                    return res.data;
+                }));
         }
         catch(err){
             
-        }
+        };
     }
 
     // console.log(selectedRooms);
@@ -96,7 +96,7 @@ const Reserve = ({ setOpen, hotelId }) => {
                         </div>
                     </div>                   
                 ))}
-                <button onClick={handleClick} className="rButton"> Reserve Now!</button>
+                {/* <button onClick={handleClick} className="rButton"> Reserve Now!</button> */}
             </div>
         </div>
     );
