@@ -4,6 +4,7 @@ import { faCircleXmark } from "@fortawesome/free-solid-svg-icons";
 import useFetch from "../../hooks/useFetch";
 import { useContext, useState } from "react";
 import { SearchContext } from "../../context/SearchContext";
+import axios from "axios";
 
 const Reserve = ({ setOpen, hotelId }) => {
     const { data, loading, error } = useFetch(`/hotels/room/${ hotelId }`);
