@@ -4,7 +4,10 @@ import "./home.scss";
 
 const Home = () => {
     return (
-        <div> <Sidebar/> </div>
+        <div className="home">
+            <Sidebar />
+            <div className="homeContainer"> aaaaa</div>
+        </div>
     )
 }
 
