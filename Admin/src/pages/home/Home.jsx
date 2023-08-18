@@ -1,8 +1,10 @@
+import Sidebar from "../../components/sidebar/Sidebar";
 import "./home.scss";
+
 
 const Home = () => {
     return (
-        <div> Home </div>
+        <div> <Sidebar/> </div>
     )
 }
 
