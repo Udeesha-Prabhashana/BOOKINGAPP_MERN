@@ -13,10 +13,6 @@
         align-items: center;
         justify-content: space-between;    //used to get space between items and search class.
 
-        .items{
-            display: flex;
-        }
-
         .search{
             display: flex;
             align-items: center;
@@ -35,8 +31,9 @@
 
         }
 
-        .items{
+        .items {
             display: flex;
         }
+
     }
 }

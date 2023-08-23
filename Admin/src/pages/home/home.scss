@@ -1,7 +1,7 @@
 .home{
-    display: flex;
+    display: flex;    //home class is sidebar 
 
-    .homeContainer{
+    .homeContainer{ //homeContainer class is navbar 
 
         flex: 6;     //used to divide both sidebar and navbar 
     }
