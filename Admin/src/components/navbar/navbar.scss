@@ -6,8 +6,34 @@
     font-size: 14px;
     color: #555;
 
-    .wrapper{
+    .wrapper{    
+        width: 100%;
         display: flex;
+        padding: 20px;
+        align-items: center;
+        justify-content: space-between;    //used to get space between items and search class.
+
+        .items{
+            display: flex;
+        }
+
+        .search{
+            display: flex;
+            align-items: center;
+            border: 0.5px solid lightgray;
+            padding: 3px;
+
+            input{
+                border: none;
+                outline: none;
+                background: transparent;
+
+                &::placeholder{
+                    font-size: 12px;
+                }
+            }
+
+        }
 
         .items{
             display: flex;

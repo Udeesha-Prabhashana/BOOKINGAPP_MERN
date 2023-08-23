@@ -9,7 +9,6 @@ const Home = () => {
             <Sidebar />
             <div className="homeContainer">
                 <Navbar />
-                ssss
             </div>
         </div>
     )
