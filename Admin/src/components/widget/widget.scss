@@ -28,5 +28,25 @@
             font-size: 12px;
             border-bottom: 1px solid gray;
         }
+        .percentage{
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+
+            &.positive {          //when change class name as positive it color change as a green
+                color: green;
+            }
+        
+            &.negative {
+                color: red;
+            }
+        }
+
+        .icon{
+            font-size: 18px;
+            padding: 5px;
+            border-radius: 5px;
+            align-self: flex-end;  //use to align to end
+        }
     }
 }
