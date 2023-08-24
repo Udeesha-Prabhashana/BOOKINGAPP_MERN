@@ -5,4 +5,9 @@
 
         flex: 6;     //used to divide both sidebar and navbar 
     }
+
+    .widgets{
+        display: flex;    //use to get vertical given datas
+        padding: 20px;
+    }
 }
