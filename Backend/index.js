@@ -40,8 +40,8 @@ app.get("/", (req, res) => {
 // });
 
 app.use(cors()) //but it is not want now because this -> "proxy": "http://localhost:8800/api"
-app.use(cookieParser())
-app.use(express.json()) //Express application to parse incoming request bodies with JSON payloads.
+app.use(cookieParser())   //(Third-party middlware)
+app.use(express.json()) //Express application to parse incoming request bodies with JSON payloads. (Build in middleware)
 
 app.use("/api/auth", authRoute);
 app.use("/api/users", usersRoute);
