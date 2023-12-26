@@ -5,9 +5,9 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 const Datatable = () => {
 
-  const [data, setData] = useState(userRows)
+  const [data, setData] = useState(userRows);
   const handleDelete = (id) => {
-    setData(data.filter((item) => item.id != id))
+    setData(data.filter((item) => item.id !== id));
   };
 
 
@@ -44,7 +44,7 @@ const Datatable = () => {
       </div>
       <DataGrid
         className="datagrid"
-        rows={userRows}
+        rows={data}
         columns={userColumns.concat(actionColumn)}        //concat use combine soem column
         pageSize={9}
         rowsPerPageOptions={[9]}
