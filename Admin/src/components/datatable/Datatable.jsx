@@ -43,6 +43,7 @@ const Datatable = () => {
         </Link>
       </div>
       <DataGrid
+        className="datagrid"
         rows={userRows}
         columns={userColumns.concat(actionColumn)}        //concat use combine soem column
         pageSize={9}
