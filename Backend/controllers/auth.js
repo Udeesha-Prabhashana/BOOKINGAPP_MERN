@@ -46,7 +46,7 @@ export const login = async (req, res, next) => {
                 httpOnly: true,     //used to any client can not reach this cookies
             })
             .status(200)
-            .json({ ...otherDetails });
+            .json({ details: {...otherDetails} , isAdmin});
     } catch (err) {
         next(err);
     }
