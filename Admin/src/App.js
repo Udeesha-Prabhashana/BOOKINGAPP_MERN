@@ -11,6 +11,7 @@ import { DarkModeContext } from "./context/darkModeContext";
 import { AuthContext } from "./context/AuthContext";
 import { hotelColumns, roomColumns, userColumns } from "./datatablesource";         //use to get table columns
 import NewHotel from "./pages/newHotel/NewHotel";
+import NewRoom from "./pages/newRoom/NewRoom";
 
 function App() {
 
@@ -116,7 +117,7 @@ function App() {
                 path="new"
                 element={
                   <ProtectedRoute>
-                    <NewHotel inputs={roomInputs} title="Add New Hotel" />
+                    <NewRoom inputs={roomInputs} title="Add New Room" />
                   </ProtectedRoute>
                 }
               />
