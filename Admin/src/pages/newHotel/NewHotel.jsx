@@ -28,6 +28,7 @@ const NewHotel = ({ inputs, title }) => {
 
 
     const handleClick = async (e) => {
+        console.log("handleclick run")
     e.preventDefault();
     try {
       const list = await Promise.all(
@@ -48,7 +49,7 @@ const NewHotel = ({ inputs, title }) => {
       const newhotel = {
         ...info,
         rooms,
-        photos: list,
+        photo: list,
       };
 
       await axios.post("/hotels", newhotel);
