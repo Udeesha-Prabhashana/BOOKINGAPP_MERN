@@ -4,12 +4,13 @@ import Login from "./pages/login/Login";
 import List from "./pages/list/List";
 import Single from "./pages/single/Single";
 import New from "./pages/new/New";
-import { productInputs, userInputs } from "./formSource";
+import { hotelInputs, productInputs, userInputs } from "./formSource";
 import "./style/dark.scss";
 import { useContext } from "react";
 import { DarkModeContext } from "./context/darkModeContext";
 import { AuthContext } from "./context/AuthContext";
 import { hotelColumns, userColumns } from "./datatablesource";         //use to get table columns
+import NewHotel from "./pages/newHotel/NewHotel";
 
 function App() {
 
@@ -89,7 +90,7 @@ function App() {
                 path="new"
                 element={
                   <ProtectedRoute>
-                    <New inputs={productInputs} title="Add New Product" />
+                    <NewHotel inputs={hotelInputs} title="Add New Hotel" />
                   </ProtectedRoute>
                 }
               />
